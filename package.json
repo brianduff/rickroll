@@ -6,9 +6,8 @@
   "type": "module",
   "scripts": {
     "clean": "rimraf dist build src/*.js src/*.map src/*.d.ts",
-    "build": "tsc && rollup -c",
-    "build:watch": "tsc --watch",
-    "serve": "wds --watch"
+    "build": "tsc && webpack",
+    "build:watch": "tsc --watch"
   },
   "author": "",
   "license": "ISC",
