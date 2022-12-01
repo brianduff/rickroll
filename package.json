@@ -8,7 +8,7 @@
     "clean": "rimraf build src/*.js src/*.map src/*.d.ts",
     "build": "tsc && rollup -c",
     "build:watch": "tsc --watch",
-    "serve": "wds --watch --node-resolve"
+    "serve": "wds --watch"
   },
   "author": "",
   "license": "ISC",

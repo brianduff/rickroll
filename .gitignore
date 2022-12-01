@@ -1,2 +1,5 @@
 node_modules
-built
+build
+*.map
+*.d.ts
+src/*.js
