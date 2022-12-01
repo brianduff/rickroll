@@ -10,7 +10,7 @@ npm run serve
 
 To see it in action. 
 
-The code in the `material` branch uses Google Material 3 lit components from
+The code in the `material` branch uses Material Design 3 lit components from
 https://github.com/material-components/material-web. To get this to work
 properly, you need to clone this repo in the same directory that `lit-starter`
 is cloned to:
