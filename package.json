@@ -5,29 +5,32 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "clean": "rimraf build src/*.js src/*.map src/*.d.ts",
-    "build": "tsc && rollup -c",
-    "build:watch": "tsc --watch",
-    "serve": "wds --watch"
+    "clean": "rimraf dist build src/*.js src/*.map src/*.d.ts",
+    "build": "tsc && webpack",
+    "build:watch": "tsc --watch"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@material/web": "file:../material-web",
     "lit": "^2.4.1"
   },
   "devDependencies": {
-    "@rollup/plugin-commonjs": "^23.0.3",
-    "@rollup/plugin-node-resolve": "^15.0.1",
-    "@rollup/plugin-terser": "^0.1.0",
+    "@babel/core": "^7.20.5",
+    "@babel/plugin-proposal-class-properties": "^7.18.6",
+    "@babel/plugin-proposal-decorators": "^7.20.5",
+    "@babel/preset-env": "^7.20.2",
     "@web/dev-server": "^0.1.35",
     "@web/dev-server-esbuild": "^0.3.3",
     "@web/dev-server-legacy": "^1.0.1",
-    "@web/rollup-plugin-html": "^1.11.0",
+    "babel-loader": "^9.1.0",
     "html-webpack-plugin": "^5.5.0",
     "rimraf": "^3.0.2",
     "rollup": "^3.5.0",
     "rollup-plugin-summary": "^2.0.0",
     "ts-lit-plugin": "^1.2.1",
-    "typescript": "^4.9.3"
+    "typescript": "^4.9.3",
+    "webpack": "^5.75.0",
+    "webpack-cli": "^5.0.0"
   }
 }

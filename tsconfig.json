@@ -2,6 +2,7 @@
   "compilerOptions": {
     "target": "es2019",
     "module": "es2020",
+    "types": [],
     "lib": ["es2020", "DOM", "DOM.Iterable"],
     "declaration": true,
     "declarationMap": true,
@@ -9,8 +10,6 @@
     "inlineSources": true,
     "rootDir": "./src",
     "strict": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
     "noImplicitAny": true,
