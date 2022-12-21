@@ -5,7 +5,7 @@ const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
 
 export default {
   entry: [
-    './src/main-page.js', 
+    './src/main-page.ts', 
   ],
   mode: "development",
   plugins: [
@@ -32,7 +32,15 @@ export default {
             ]
           }
         }
+      },
+      {
+        test: /\.tsx?$/,
+        use: 'ts-loader',
+        exclude: /node_modules/,
       }
     ]
   },
+  resolve: {
+    extensions: [ '.tsx', '.ts', '.js' ]
+  }
 };

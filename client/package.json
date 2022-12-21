@@ -6,13 +6,13 @@
   "type": "module",
   "scripts": {
     "clean": "rimraf dist build src/*.js src/*.map src/*.d.ts",
-    "build": "tsc && webpack",
-    "build:watch": "tsc --watch"
+    "build": "webpack",
+    "start": "webpack serve"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@material/web": "file:../material-web",
+    "@material/web": "file:../../material-web",
     "lit": "^2.4.1"
   },
   "devDependencies": {
@@ -29,8 +29,10 @@
     "rollup": "^3.5.0",
     "rollup-plugin-summary": "^2.0.0",
     "ts-lit-plugin": "^1.2.1",
+    "ts-loader": "^9.4.2",
     "typescript": "^4.9.3",
     "webpack": "^5.75.0",
-    "webpack-cli": "^5.0.0"
+    "webpack-cli": "^5.0.0",
+    "webpack-dev-server": "^4.11.1"
   }
 }
