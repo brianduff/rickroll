@@ -42,5 +42,11 @@ export default {
   },
   resolve: {
     extensions: [ '.tsx', '.ts', '.js' ]
+  },
+  devServer: {
+    client: {
+      reconnect: true,
+    },
+    liveReload: true,
   }
 };

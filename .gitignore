@@ -4,3 +4,4 @@ dist
 *.map
 *.d.ts
 src/*.js
+client/node_modules
