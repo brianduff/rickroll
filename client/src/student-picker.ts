@@ -7,19 +7,21 @@ import '@material/web/list/list-divider.js';
 
 import { Student } from './student';
 
+async function fetchJson(url: string) {
+  return fetch(url).then(res => res.json())
+}
+
 @customElement('student-picker')
 export class StudentPicker extends LitElement {
   @property()
-  students: Student[] = [
-    {
-      name: "Caitlin",
-      imageUrl: "https://storage.googleapis.com/discobubble-quiz/IMG_2071.jpg",
-    },
-    {
-      name: "Michael",
-      imageUrl: "https://storage.googleapis.com/discobubble-quiz/IMG_2071.jpg",
-    }
-  ];
+  students: Student[] = []
+
+  connectedCallback() {
+    super.connectedCallback()
+    fetchJson('http://localhost:3000/students').then(data => {
+      this.students = data
+    })
+  }
 
   render() {
     return html`
