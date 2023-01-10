@@ -54,9 +54,9 @@ export class MainPage extends LitElement {
 
   render() {
     return html`
-    <style>
+    <!-- <style>
       @import url(//fonts.googleapis.com/css2?family=Material+Symbols+Outlined);
-    </style> 
+    </style>  -->
     <h1>RickRoll</h1>
     ${this.router.outlet()}
     `;
