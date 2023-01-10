@@ -25,7 +25,6 @@ export class StudentPicker extends LitElement {
 
   render() {
     return html`
-      <div>Choose a player</div>
       <md-list>
         <md-list-divider></md-list-divider>
         ${this.students.map((student) => html`
