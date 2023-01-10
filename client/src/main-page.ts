@@ -10,27 +10,25 @@ import '@material/web/list/list-divider.js';
 import '@material/web/icon/icon.js';
 
 import './student-picker.ts';
+import { Router } from '@lit-labs/router';
 
 @customElement('main-page')
 export class MainPage extends LitElement {
   @property()
   version = 'STARTING';
 
-  @property()
-  message = "Click the button, please.";
+  private router = new Router(this, [
+    {path: '/', render: () => html`<student-picker></student-picker>`}
+  ]);
 
   render() {
     return html`
     <style>
       @import url(//fonts.googleapis.com/css2?family=Material+Symbols+Outlined);
     </style> 
-    <h1>Welcome to RickRoll!</h1>
-    <student-picker></student-picker>
+    <h1>RickRoll</h1>
+    ${this.router.outlet()}
     `;
   }
 
-  private clickButton(e: Event) {
-    console.log("Button clicked")
-    this.message = "You clicked! Whey hey!"
-  }
 }
