@@ -12,6 +12,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@lit-labs/router": "^0.1.1",
     "@material/web": "file:../../material-web",
     "lit": "^2.4.1"
   },
