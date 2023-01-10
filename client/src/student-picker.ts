@@ -14,13 +14,37 @@ async function fetchJson(url: string) {
   return fetch(url).then(res => res.json())
 }
 
+
+@customElement('student-picker-item')
+export class StudentPickerItem extends LitElement {
+  @property()
+  student?: Student
+
+  itemClicked() {
+    console.log("Click! on ", this.student)
+  }
+
+  render() {
+    if (this.student) {
+      return html`
+      <md-list-item @click=${this.itemClicked} .headline=${this.student.name}>
+        <md-list-item-image slot="start" .image=${this.student.imageUrl}></md-list-item-image>
+      </md-list-item>
+      <md-list-divider></md-list-divider>
+    `
+    }
+    return html`<span></span>`
+  }
+
+}
+
 @customElement('student-picker')
 export class StudentPicker extends LitElement {
   @property()
   students: Student[] = []
 
-  @consume({context: routerContext, subscribe: true})
-  @property({attribute: false})
+  @consume({ context: routerContext, subscribe: true })
+  @property({ attribute: false })
   router?: Router;
 
   connectedCallback() {
@@ -32,16 +56,17 @@ export class StudentPicker extends LitElement {
     console.log("Router is ", this.router);
   }
 
+  itemClicked(e: Event) {
+    console.log("Click! on ", e)
+  }
+
   render() {
     return html`
       <div>Choose a player</div>
       <md-list>
         <md-list-divider></md-list-divider>
         ${this.students.map((student) => html`
-          <md-list-item headline=${student.name}>
-            <md-list-item-image slot="start" image=${student.imageUrl}></md-list-item-image>
-          </md-list-item>
-          <md-list-divider></md-list-divider>
+          <student-picker-item .student=${student}></student-picker-item>
         `)}
       </md-list>
     `
