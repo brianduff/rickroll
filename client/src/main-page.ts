@@ -11,13 +11,18 @@ import '@material/web/icon/icon.js';
 
 import './student-picker.ts';
 import { Router } from '@lit-labs/router';
+import { createContext, provide } from '@lit-labs/context';
+import { routerContext } from './context-defs';
+
 
 @customElement('main-page')
 export class MainPage extends LitElement {
   @property()
   version = 'STARTING';
 
-  private router = new Router(this, [
+  @provide({context: routerContext })
+  @property({attribute: false})
+  public router = new Router(this, [
     {path: '/', render: () => html`<student-picker></student-picker>`}
   ]);
 

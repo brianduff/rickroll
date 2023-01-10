@@ -6,6 +6,9 @@ import '@material/web/list/list-item-image.js';
 import '@material/web/list/list-divider.js';
 
 import { Student } from './student';
+import { consume } from "@lit-labs/context";
+import { Router } from "@lit-labs/router";
+import { routerContext } from "./context-defs";
 
 async function fetchJson(url: string) {
   return fetch(url).then(res => res.json())
@@ -16,11 +19,17 @@ export class StudentPicker extends LitElement {
   @property()
   students: Student[] = []
 
+  @consume({context: routerContext, subscribe: true})
+  @property({attribute: false})
+  router?: Router;
+
   connectedCallback() {
     super.connectedCallback()
     fetchJson('http://localhost:3000/students').then(data => {
       this.students = data
     })
+
+    console.log("Router is ", this.router);
   }
 
   render() {
