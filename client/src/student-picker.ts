@@ -5,7 +5,7 @@ import '@material/web/list/list-item.js';
 import '@material/web/list/list-item-image.js';
 import '@material/web/list/list-divider.js';
 
-import { Student } from './student';
+import { Student } from '@backend-types/student';
 import { consume } from "@lit-labs/context";
 import { Router } from "@lit-labs/router";
 import { routerContext } from "./context-defs";
@@ -20,8 +20,10 @@ export class StudentPickerItem extends LitElement {
   @property()
   student?: Student
 
+
   itemClicked() {
-    console.log("Click! on ", this.student)
+    const event = new CustomEvent('pick', { bubbles: true, detail: this.student, composed: true })
+    this.dispatchEvent(event)
   }
 
   render() {
@@ -47,17 +49,16 @@ export class StudentPicker extends LitElement {
   @property({ attribute: false })
   router?: Router;
 
+  constructor() {
+    super()
+//    this.addEventListener('pick', e => console.log("From inside"))
+  }
+
   connectedCallback() {
     super.connectedCallback()
     fetchJson('http://localhost:3000/students').then(data => {
       this.students = data
     })
-
-    console.log("Router is ", this.router);
-  }
-
-  itemClicked(e: Event) {
-    console.log("Click! on ", e)
   }
 
   render() {
@@ -70,5 +71,14 @@ export class StudentPicker extends LitElement {
         `)}
       </md-list>
     `
+  }
+}
+
+// I think this shouldn't be needed, but the vscode lit extension
+// grumbles otherwise.
+declare global {
+  interface HTMLElementTagNameMap {
+    'student-picker': StudentPicker;
+    'student-picker-item': StudentPickerItem;
   }
 }

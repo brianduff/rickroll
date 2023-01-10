@@ -9,10 +9,13 @@ import '@material/web/list/list-item-image.js';
 import '@material/web/list/list-divider.js';
 import '@material/web/icon/icon.js';
 
-import './student-picker.ts';
+import './student-picker';
 import { Router } from '@lit-labs/router';
 import { createContext, provide } from '@lit-labs/context';
-import { routerContext } from './context-defs';
+import { routerContext, studentContext } from './context-defs';
+import { Student } from '@backend-types/student';
+
+import './student-activities';
 
 
 @customElement('main-page')
@@ -23,8 +26,31 @@ export class MainPage extends LitElement {
   @provide({context: routerContext })
   @property({attribute: false})
   public router = new Router(this, [
-    {path: '/', render: () => html`<student-picker></student-picker>`}
+    {path: '/', render: this.renderStudentPicker },
+    {path: '/activities', render: () => html`<student-activities></student-activities>`}
   ]);
+
+  @provide({context: studentContext})
+  @property({attribute: false})
+  public student: Student | undefined = undefined;
+
+  constructor() {
+    super()
+    this.addEventListener("pick", this.studentPicked)
+  }
+
+  studentPicked(event: Event) {
+    const student = (event as CustomEvent<Student>).detail;
+    this.student = student;
+    this.router.goto('/activities');
+    history.pushState({}, '', '/activities');
+  }
+
+  renderStudentPicker() {
+    return html`
+        <student-picker></student-picker>
+    `
+  }
 
   render() {
     return html`

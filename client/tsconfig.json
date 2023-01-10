@@ -22,7 +22,10 @@
         "name": "ts-lit-plugin",
         "strict": true
       }
-    ]
+    ],
+    "paths": {
+      "@backend-types/*": ["../server/types/*"]
+    }
   },
   "exclude": ["node_modules", "@material"],
   "include": ["src"]
