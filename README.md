@@ -1,6 +1,6 @@
-# Lit Starter with Google Material
+# Rickroll
 
-This is a super simple starter project using lit-html. 
+This is an experiment using Lit, mainly for learning purposes.
 
 Start the server:
 ```
