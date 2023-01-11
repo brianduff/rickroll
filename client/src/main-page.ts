@@ -27,8 +27,12 @@ export class MainPage extends LitElement {
   @property({attribute: false})
   public router = new Router(this, [
     {path: '/', render: this.renderStudentPicker },
-    {path: '/activities', render: () => html`<student-activities></student-activities>`}
-  ]);
+    {path: '/activities', render: () => html`<student-activities></student-activities>`},
+  ], {
+    fallback: {
+      render: this.renderStudentPicker
+    }
+  });
 
   constructor() {
     super()
