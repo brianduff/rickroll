@@ -12,7 +12,7 @@ import '@material/web/icon/icon.js';
 import './student-picker';
 import { Router } from '@lit-labs/router';
 import { createContext, provide } from '@lit-labs/context';
-import { routerContext, studentContext } from './context-defs';
+import { routerContext } from './context-defs';
 import { Student } from '@backend-types/student';
 
 import './student-activities';
@@ -30,10 +30,6 @@ export class MainPage extends LitElement {
     {path: '/activities', render: () => html`<student-activities></student-activities>`}
   ]);
 
-  @provide({context: studentContext})
-  @property({attribute: false})
-  public student: Student | undefined = undefined;
-
   constructor() {
     super()
     this.addEventListener("pick", this.studentPicked)
@@ -41,7 +37,7 @@ export class MainPage extends LitElement {
 
   studentPicked(event: Event) {
     const student = (event as CustomEvent<Student>).detail;
-    this.student = student;
+    sessionStorage.setItem("currentStudent", JSON.stringify(student))
     this.router.goto('/activities');
     history.pushState({}, '', '/activities');
   }
