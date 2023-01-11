@@ -48,5 +48,6 @@ export default {
       reconnect: true,
     },
     liveReload: true,
+    historyApiFallback: true,
   }
 };
