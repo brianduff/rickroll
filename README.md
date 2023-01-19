@@ -1,6 +1,6 @@
 # Rickroll
 
-This is an experiment using Lit, mainly for learning purposes.
+This is an experiment using Lit 2.0, mainly for learning purposes.
 
 Start the server:
 ```
